@@ -1,0 +1,85 @@
+{% load static %}
+
+{% block title %}JoyeHotels - Login{% endblock title %}
+
+{% include 'navigation.html' %}
+
+
+
+    <!-- login form -->
+    {% block login %}
+    <style>
+        .social_auth{display: flex;
+            justify-content: space-evenly;
+            margin: 14px;
+            border-top:1px solid rgb(223, 223, 223);
+            padding-top: 18px;
+        }
+        .social_auth a i:nth-child(1){
+            border: 2px solid #db3236;
+            padding: 20px 10px;
+            border-radius: 5px;
+        }
+        .social_auth a i:nth-child(2){
+            border: 2px solid #1877f2;
+            padding: 20px 10px;
+            border-radius: 5px;
+        }
+        
+
+    </style>
+
+    <section class="book" style="margin-top: 50px" id="book">
+        
+        
+        {% include 'messages.html' %}
+        <div class="row">
+
+            <div class="img">
+                <img decoding="async" src=" {% static 'img/login.svg' %} " alt="" />
+            </div>
+
+
+            <div class=" login-form-container form">
+
+            <form  action="" method="POST">
+                {% csrf_token %}
+                <div class="inputBox">
+
+                    <h3>Enter username</h3>
+                    <input type="text" name="username" id="username" placeholder="username" />
+                </div>
+                <div class="inputBox">
+                    <h3>Enter password</h3>
+                    <input type="password" name="password" id="password" placeholder="password" />
+                </div>
+
+                <input type="submit"  class="btn" value="login" />
+                
+                <input type="checkbox" id="remember">
+                <label for="remember">Remember me</label>
+                <p>forget password? <a href="#">click here</a></p>
+                <p>don't have and account? <a href="{% url 'register' %}" id="signin_toggle">register now</a></p>
+
+                
+
+                <!-- login with google -->
+                <div class="social_auth">
+                    <a href="">
+                    <i class="fa-brands fa-google fa-sm" style="color: #db3236;">oogle</i>
+                </a>
+
+                <!-- login with facebook -->
+                <!-- <a href="">
+                    <i class="fa-brands fa-facebook-f j fa-sm" style="color: #1877f2;">acebook</i>
+                </a> -->
+                </div>
+                
+            </form>
+        </div>
+
+            
+        </div>
+    </section>
+
+    {% endblock login %}

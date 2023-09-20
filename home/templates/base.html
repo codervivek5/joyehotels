@@ -1,0 +1,252 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  {% block title %}{% endblock title %}
+  <link rel="shortcut icon" href="{%static 'img/icon.favicon.ico'%}" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Load your custom CSS file using the static template tag -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+
+
+  {% include 'navigation.html' %}
+
+  <!-- this is body tag where is added basic hotel sections -->
+
+  {% block body %}{% endblock body %}
+
+  <!-- this is body tag where is added basic hotel sections -->
+
+
+  <section class="services" id="services">
+    <h1 class="heading">
+      <span>s</span>
+      <span>e</span>
+      <span>r</span>
+      <span>v</span>
+      <span>i</span>
+      <span>c</span>
+      <span>e</span>
+      <span>s</span>
+    </h1>
+
+    <div class="box-container">
+      <div class="box">
+        <i class="fas fa-hotel"></i>
+        <h3>affordable hotels</h3>
+        <p>
+          joye hotels offer budget-friendly accommodation without compromising
+          on comfort. They cater to travelers seeking cost-effective options
+          while providing a pleasant stay experience.
+        </p>
+      </div>
+      <div class="box">
+        <i class="fas fa-utensils"></i>
+        <h3>food and drinks</h3>
+        <p>
+          Where Gastronomy Takes Center Stage - Savor Global Flavors and
+          Handcrafted Drinks at Our Hotel. A Culinary Adventure Awaits,
+          Redefining Your Dining Experience Beyond Expectations!
+        </p>
+      </div>
+      <div class="box">
+        <i class="fas fa-bullhorn"></i>
+        <h3>safty guide</h3>
+        <p>
+          Your Safety Our Priority: Enjoy 24/7 CCTV Surveillance for a Secure
+          Stay. Reach Us Anytime for Customer Support - We're Just a Call
+          Away, Ready to Assist Both Virtually and In-Person.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <h1 class="heading">
+      <span>g</span>
+      <span>a</span>
+      <span>l</span>
+      <span>l</span>
+      <span>e</span>
+      <span>r</span>
+      <span>y</span>
+    </h1>
+
+    <div class="box-container">
+      <div class="box">
+        <img decoding="async" src="{% static 'img/g-1.jpg' %}" alt="" />
+        <div class="content">
+          <h3>Gurgaon</h3>
+          <p>Explore our best services in this location</p>
+          <a href="#" class="btn">see more</a>
+        </div>
+      </div>
+      <div class="box">
+        <img decoding="async" src="{% static 'img/g-2.jpg' %}" alt="" />
+        <div class="content">
+          <h3>Noida</h3>
+          <p>Explore our best services in this location</p>
+          <a href="#" class="btn">see more</a>
+        </div>
+      </div>
+      <div class="box">
+        <img decoding="async" src="{% static 'img/g-3.jpg' %}" alt="" />
+        <div class="content">
+          <h3>New Delhi</h3>
+          <p>Explore our best services in this location</p>
+          <a href="#" class="btn">see more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="review" id="review">
+    <h1 class="heading">
+      <span>r</span>
+      <span>e</span>
+      <span>v</span>
+      <span>i</span>
+      <span>e</span>
+      <span>w</span>
+    </h1>
+    <div class="swiper mySwiper review-slider">
+      <div class="swiper-wrapper wrapper">
+        <div class="swiper-slide">
+          <div class="box">
+            <img decoding="async" src="{% static 'img/pic1.png' %}" alt="" />
+            <h3>Lalisa Benton</h3>
+            <p>
+              Amazing stay! Exceeded expectations, affordable prices,
+              exceptional customer support. Highly recommend for a hassle-free
+              travel experience. Will return!
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="box">
+            <img decoding="async" src="{% static 'img/pic2.png' %} " alt="" />
+            <h3>Edward hemton</h3>
+            <p>
+              Ample and Convenient Parking! The hotel's well-designed parking
+              facility made my stay hassle-free. No worries about finding a
+              spot, allowing me to focus on enjoying my trip fully.
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="box">
+            <img decoding="async" src="{% static 'img/pic3.png' %}" alt="" />
+            <h3>Jenna solvi</h3>
+            <p>
+              Smooth and seamless payment process! The hotel's efficient
+              payment system made settling my bill effortless, enhancing the
+              overall experience of my stay. Impressed with the convenience
+              and security provided.
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="box">
+            <img decoding="async" src="{% static 'img/pic4.png' %}" alt="" />
+            <h3>Edward Bey</h3>
+            <p>
+              Booking directly with the hotel is a smart move! Even if the
+              prices match OTAs, the benefits can be incredible - think room
+              upgrades, flexible cancellations, and more. Don't miss out!
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- contact section -->
+
+  {% include 'contact.html' %}
+
+  
+
+
+  <!-- brands section -->
+
+  <section class="brand-container">
+    <div class="swiper mySwiper brand-slider">
+      <div class="swiper-wrapper wrapper">
+        <div class="swiper-slide">
+          <img decoding="async" src="{% static 'img/1.jpg' %}" alt="" />
+        </div>
+        <div class="swiper-slide">
+          <img decoding="async" src="{% static 'img/2.jpg' %}" alt="" />
+        </div>
+        <div class="swiper-slide">
+          <img decoding="async" src="{% static 'img/3.jpg' %}" alt="" />
+        </div>
+        <div class="swiper-slide">
+          <img decoding="async" src="{% static 'img/4.jpg' %}" alt="" />
+        </div>
+        <div class="swiper-slide">
+          <img decoding="async" src="{% static 'img/5.jpg' %}" alt="" />
+        </div>
+        <div class="swiper-slide">
+          <img decoding="async" src="{% static 'img/6.jpg' %}" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include 'footer.html' %}
+
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js" defer></script>
+
+  <!-- Load your custom JavaScript files using the static template tag -->
+  <script src="{% static 'js/script.js' %}" defer></script>
+  <script src="{% static 'js/bookForm.js' %}" defer></script>
+  <script src="{% static 'js/contact.js' %}" defer></script>
+  <script src="{% static 'js/login_signup.js' %}" defer></script>
+</body>
+
+</html>

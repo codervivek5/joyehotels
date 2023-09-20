@@ -1,0 +1,146 @@
+/* Import the Nunito font */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap");
+
+/* Define custom color variable */
+:root {
+    --orange: #ffa500;
+}
+
+/* Reset default styles */
+* {
+    font-family: "Nunito", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all 0.2s linear;
+}
+
+/* Set up the layout */
+.container {
+    /* margin-top: 6rem; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* padding: 10px; */
+    /* border: 1px solid #ccc; */
+    
+}
+
+/* Style for dropdowns */
+.dropdown {
+    width: 100%;
+    padding: 5px 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.2s, background-color 0.2s;
+
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+}
+
+
+/* Hover effect for dropdowns */
+.dropdown:hover {
+    border-color: var(--orange);
+    background-color: rgba(255, 165, 0, 0.1);
+}
+
+/* Style for options within dropdowns */
+.dropdown option {
+    width: 100%; /* Set the width for options */
+    padding: 10px 20px; /* Adjust padding for options */
+    transition: white 0.2s, color 0.2s;
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    border: 1px solid #ccc;
+}
+
+/* Hover effect for options within dropdowns */
+.dropdown option:hover {
+    background-color: var(--orange);
+    color: white;
+}
+
+/* Label styles for checkbox options */
+.dropdown-content label {
+    margin: 0 5px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    /* Adjust the layout for medium-sized screens */
+    .container {
+        flex-direction: row;
+    }
+
+    /* Margin and padding adjustments for dropdown sections */
+    .container > .dropdown-section {
+        margin-bottom: 20px;
+    }
+
+    /* Remove border and padding for the last dropdown section */
+    .container > .dropdown-section:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    /* Adjust font size and padding for dropdowns */
+    .dropdown {
+        font-size: small;
+        padding: 5px 20px;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    /* Further adjust font size and padding for smaller screens */
+    .container .dropdown-section{
+        padding: 0px;
+        margin: 3px;
+    }
+    .container > .dropdown-section,
+    .dropdown {
+        font-size: 11px;
+    }
+
+    /* Adjust padding for dropdowns */
+    .dropdown {
+        padding-left: 7px;
+    }
+}
+/* @media screen and (max-width: 414px) {
+
+    .container .dropdown-section .find_btn{
+        margin: 0px;
+        position: relative;
+        top: 6px;
+    }
+
+} */
+
+@media screen and (max-width: 390px) {
+    /* Additional adjustments for even smaller screens */
+
+    .container .dropdown-section{
+        padding: 0px;
+        margin: 3px;
+    }
+    .container > .dropdown-section,
+    .dropdown {
+        font-size: 11px;
+    }
+    .container > .dropdown-section h2{
+        font-size: small;
+    }
+
+    /* Adjust padding for dropdowns */
+    .dropdown {
+        padding-left: 7px;
+    }
+}

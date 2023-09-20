@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{%block body %}
+
+<!-- video carousel -->
+
+<section class="home" id="home">
+    <div class="content">
+        <h3>welcome to A global icon of luxury</h3>
+        <p>dicover new places with us, luxury awaits</p>
+        <a href="#packages" class="btn">discover more</a>
+    </div>
+
+    <div class="controls">
+        <span class="vid-btn active" data-src="{% static 'img/video/vid-1.mp4' %}"></span>
+        <span class="vid-btn" data-src="{% static 'img/video/vid-2.mp4' %}"></span>
+        <span class="vid-btn" data-src="{% static 'img/video/vid-3.mp4' %}"></span>
+        <!-- <span class="vid-btn" data-src="img/video/vid-4.mp4"></span>
+        <span class="vid-btn" data-src="img/video/vid-5.mp4"></span> -->
+    </div>
+
+    <div class="video-container">
+        <video src="{% static 'img/video/vid-1.mp4' %}" id="video-slider" loop autoplay muted></video>
+    </div>
+
+</section>
+
+<!-- hotels section -->
+
+    <section class="packages" id="packages">
+      <h1 class="heading">
+        <span>h</span>
+        <span>o</span>
+        <span>t</span>
+        <span>e</span>
+        <span>l</span>
+        <span>s</span>
+      </h1>
+
+      <div class="box-container">
+        <div class="box">
+          <img decoding="async" src="{% static 'img/p-1.jpg' %}" alt="" />
+          <div class="content">
+            <h3>Mohen peda</h3>
+            <h4><i class="fas fa-map-marker-alt"></i> Andhra Pradesh</h4>
+            <p>
+              This majestic 5-star resort sits at a stunning elevation of 2000
+              feet above the city, in a restored 1894 palace. The suites have
+              Colonial themed interiors and marble floors with furnished
+              balconies.
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <div class="price">₹ 4399.00 <span>₹ 5000.00</span></div>
+            <a href="#book" class="btn">book now</a>
+          </div>
+        </div>
+
+        <div class="box">
+          <img decoding="async" src="{% static 'img/p-2.jpg' %}" alt="" />
+          <div class="content">
+            <h3>
+              <i class="fas fa-map-marker-alt"></i> The Oberoi Amarvilas, Agra
+            </h3>
+            <p>
+              Built with splendid Mughal architecture, the Oberoi Amarvilas is
+              the best heritage hotel of Agra by some distance. Dotted with
+              fountains and lawns all around, it offers an unforgettable stay in
+              a palam
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <div class="price">₹ 3799.00 <span>₹ 4000.00</span></div>
+            <a href="#book" class="btn">book now</a>
+          </div>
+        </div>
+
+        <div class="box">
+          <img decoding="async" src="{% static 'img/p-3.jpg' %}" alt="" />
+          <div class="content">
+            <h3>
+              <i class="fas fa-map-marker-alt"></i> The Oberoi Udaivilas,
+              Udaypur
+            </h3>
+            <p>
+              Sprawled across 50 acres of ravishing landscape, this 5-star
+              resort offers panoramic views of Lake Pichola. Their suites
+              feature grand Rajasthani architecture and stylish interiors with
+              iPod docks.
+            </p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <div class="price">₹ 6799.00 <span>₹ 7000.00</span></div>
+            <a href="#book" class="btn">book now</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="/hotels">
+        <h3>see more...</h3>
+      </a>
+    </section>
+
+
+{% endblock body %}
+
+

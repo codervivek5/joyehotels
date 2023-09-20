@@ -1,0 +1,240 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href=" {% static 'css/hotel_detail.css' %}" />
+    <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+</head>
+
+<body>
+    <!-- Add back button-->
+  <!--   <div class="back-button">
+        <a href="javascript:history.back()">
+            <i class="fas fa-chevron-left"></i> Back to home
+        </a>
+    </div> -->
+
+     <div class="back-button">
+        <a href="/hotels" onclick="goBack()">
+            <i class="fas fa-chevron-left"></i> Back to home
+        </a>
+    </div> 
+
+    <div id="carouselExampleIndicators" class="carousel slide">
+        <!-- <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div> -->
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src=" /media/{{ hotel_obj.hotel_images.first.image }}" class="d-block w-100 h-80"
+                    alt="hotel_img" />
+            </div>
+        </div>
+        <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button> -->
+    </div>
+
+    <!-- Images of hotel -->
+
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-6 g-4">
+            {% for image in hotel_obj.hotel_images.all %}
+            <div class="col">
+                <div class="img-thumbnail">
+                    <img src="/media/{{ image.image }}" class="card-img-top" alt="image" />
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- ---------------------------------------- -->
+
+        <section class="detail mt-4">
+            <!-- Basic detail of hotel -->
+            <div class="card mr-2 left_card">
+                <div class="card-body">
+                    <h4 class="card-title">{{ hotel_obj.hotel_name}}</h4>
+
+                    <h6 class="card-subtitle mb-2 text-body-secondary">
+                        <i class="fas fa-map-marker-alt" style="color: #ffa500"></i>
+                        {{hotel_obj.place}}
+                    </h6>
+                    <hr />
+
+                    <h5>Description:</h5>
+                    <p class="card-text">{{ hotel_obj.description}}</p>
+
+                    <h5>Date of guests:</h5>
+                    <p class="card-text booking_date">
+                        <i class="fa-solid fa-calendar-days fa-xl fa-fw" style="color: #ffa500"></i>today 12:34am
+                    </p>
+                    <!-- <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a> -->
+
+                    <h5>Amenities:</h5>
+                    <p class="card-text amenitie">
+                        {% for amenitie in hotel_obj.amenities.all %}
+                        <b> {{amenitie.amenity_name}}</b>, {% endfor %}
+                    </p>
+                    <div class="room_cnt">
+                        <h5>Room count:</h5>
+                        <p class="card-text">{{ hotel_obj.room_count}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pre-check of hotel details -->
+            <div class="card ml-2 right_card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        {{ hotel_obj.hotel_name|truncatechars:20}}
+                        <img src="/media/{{ hotel_obj.hotel_images.first.image }}" class="card-detail img-thumbnail"
+                            alt="..." />
+                    </h4>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">
+                        <i class="fas fa-map-marker-alt" style="color: #ffa500"></i>
+                        {{hotel_obj.place}}
+                    </h6>
+                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p> -->
+                </div>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Room price <span>₹{{hotel_obj.actual_price}} </span>
+                    </li>
+
+                    <li class="list-group-item">
+                        Instant discount
+                        <span>
+                            {% if hotel_discount > 0 %}- {% endif %}₹
+                            {{hotel_discount}}</span>
+                    </li>
+
+                    <li class="list-group-item">
+                        GST {{gst_percentage}}% <span>+ ₹{{gst_amount}}</span>
+                    </li>
+
+                    <li class="list-group-item">
+                        Total Amount <span>=</span> <span> ₹{{total_amount}}</span>
+                    </li>
+                </ul>
+                <div class="card-body pay_section">
+                    <div class="total_pay">
+                        <span class="card-link">
+                            <span> Price to pay : </span>₹ {{total_amount}}</span>
+
+                        {% if user.is_authenticated %}
+                        <button href="{% url 'payment' uid=hotel_obj.uid  %}" class="btn btn-success" id="rzp-button1">
+                            Pay 
+                        </button>
+                        {% else %}
+                        <a href="{% url 'login' %}?next={% url 'hoteldetail' uid=hotel_obj.uid%}" class="btn btn-success">
+                            Login to Pay
+                        </a>
+                        {% endif %}
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+  <!-- Razorpay payment Integration -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+
+    
+    // Calculate the total amount in paisa (100x the amount in INR)
+    var totalAmount = {{ total_amount }} * 100;
+    
+    // Razorpay payment options
+    var options = {
+        key: "rzp_test_ha0ktmZzSu1erb", // Replace with your Razorpay Key ID
+        amount: totalAmount, // Total amount in paisa
+        currency: "INR",
+        name: "JoyeHotels",
+        description: "Hotel Description",
+        image: "{% static 'img/logo.png' %}", // Replace with your logo image URL
+        order_id: '{{ order_id }}', // Replace with your order ID
+        "prefill": {
+            "name": "{{ user.username }}",
+            "email": "{{ user.email }}",
+        },
+        
+        
+        // Callback function when payment is successful
+
+        handler: function (response) {
+        // Get the Razorpay payment ID
+        var paymentId = response.razorpay_payment_id;
+        
+        // Get the UID from the URL
+        var uid = '{{ hotel_obj.uid }}';
+
+        // Redirect to the payment success page with the payment ID and UID
+        window.location.href = "{% url 'payment' uid=hotel_obj.uid %}?payment_id=" + paymentId;
+
+
+},
+        
+        // Modal dismissal callback
+        modal: {
+            ondismiss: function () {
+                if (confirm("Are you sure you want to close the form?")) {
+                    console.log("Checkout form closed by the user");
+                } else {
+                    console.log("Complete the Payment");
+                }
+            },
+        },
+    };
+    
+    // Create a new Razorpay instance
+    var rzp1 = new Razorpay(options);
+    
+    // Open the Razorpay payment form when the button is clicked
+    document.getElementById("rzp-button1").onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+    };
+</script>
+
+</body>
+
+</html>

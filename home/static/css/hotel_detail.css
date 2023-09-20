@@ -1,0 +1,202 @@
+/* Import the Nunito font */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap");
+
+/* Reset default styles */
+* {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  transition: all 0.2s linear;
+}
+
+:root {
+  --orange: #ffa500;
+}
+
+/* Style for the back button section */
+.back-button {
+  background-color: #333;
+  padding: 0.5rem 0px 0.5rem 3rem;
+  box-shadow: 0 0.2rem 0.5rem rgba(95, 87, 74, 0.2);
+  z-index: 1100;
+  display: flex;
+}
+
+.back-button a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.back-button a i {
+  margin-right: 5px;
+}
+
+.back-button a strong {
+  font-weight: bold;
+}
+
+.back-button a:hover {
+  color: #ffa500;
+}
+
+/* Style for the button over the carousel */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--orange);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.carousel-button:hover {
+  background-color: #ff8c00; /* Darker shade on hover */
+}
+
+/* Additional styles for the rest of your page */
+.carousel-item {
+  height: 45vh;
+  object-fit: cover;
+}
+
+.container {
+  z-index: 5;
+  position: relative;
+  top: -2rem;
+}
+
+.container .detail .left_card{
+  width: 70%;
+}
+.container .left_card .detail .card-body .room_cnt{
+  display: flex;
+}
+.container .left_card .card-body .room_cnt p{
+  margin-left: 10px;
+}
+
+.container .left_card .card-body h5 {
+  font-weight: bolder;
+}
+
+.container .left_card .card-body .booking_date {
+  border: 1px solid var(--orange);
+  display: inline-block;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+.container .left_card .card-body .booking_date img {
+  margin-right: 8px;
+}
+.container .left_card .card-body .amenitie b  {
+  color: var(--orange);
+}
+
+.container .detail .right_card {
+  width: 30%;
+  height: 70%;
+  margin-left: 1rem;
+}
+
+.container .right_card ul li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container .right_card .pay_section {
+  background-color: rgb(245, 235, 223);
+}
+
+.container .right_card .pay_section .total_pay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container .right_card .total_pay .btn {
+  background-color: var(--orange);
+  border: none;
+  width: 120px;
+  transition: 0.3s;
+}
+
+.container .right_card .total_pay .btn:hover {
+  box-shadow: 0px 0px 10px 2px #444444;
+}
+
+.container .detail {
+  display: flex;
+  justify-content: space-around;
+}
+
+h4 {
+  display: flex;
+  font-weight: bolder;
+  justify-content: space-between;
+}
+
+.card-detail {
+  width: 22%;
+  height: auto;
+}
+
+/* media query */
+@media (max-width: 414px) {
+  .container {
+    z-index: 5;
+    position: relative;
+    top: -5.6rem;
+  }
+
+  .container .detail .left_card{
+    width: 100%;
+  }
+
+  .container .detail .right_card {
+      width: 100%;
+      height: 70%;
+      margin: 0px;
+      margin-top:10px;
+  }
+  
+
+  .container .detail {
+    flex-direction: column;
+  }
+
+  .carousel-item img {
+    object-fit: cover;
+  }
+
+  .row .col {
+    width: auto;
+    margin: 0;
+  }
+
+  .row .col img {
+    display: flex;
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .container .right_card .total_pay .btn{
+    width: 8rem;
+  }
+}

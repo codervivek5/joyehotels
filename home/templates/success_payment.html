@@ -1,0 +1,73 @@
+{% load static %}
+
+<link rel="stylesheet" href=" {% static 'css/success_payment.css' %}" />
+
+<style>
+    
+    :root {
+        --orange: #ffa500;
+      }
+      
+      .container{
+          /* margin:3rem 9rem; */
+          font-family:system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          /* border: 2px solid orangered; */
+          padding: 20px 0px;
+          /* width: 60%; */
+          border-radius: 20px;
+      }
+      .container h1{
+        /* border:2px solid #ffa500; */
+        padding: 10px 25px;
+        font-size: 30px;
+       
+        color:rgb(161, 105, 0);
+        border-radius: 10px;
+        background-color: #fcedd1;
+      }
+      .img_container{
+        display: flex;
+        /* margin-top: 20px; */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+      }
+      .img_container img{
+        width: 30rem;
+      }
+      @media (max_width :415) {
+        .container{
+          /* margin:3rem 9rem; */
+          font-family:system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          /* border: 2px solid orangered; */
+          padding: 20px 0px;
+          /* width: 60%; */
+          border-radius: 20px;
+      } 
+        
+      }
+</style>
+
+<section class="container">
+    <!-- <h1 class="heading">
+        Payment successful
+    </h1>  -->
+
+    <div class="img_container">
+        <img src="{% static 'img/payment.svg' %}" alt="payment_success img">
+        
+        <p>Thankyou for your payment. An automated payment receipt will send to your registered email.</p>
+        <a href="/">Back to Home</a>
+      
+
+    </div>
+</section>

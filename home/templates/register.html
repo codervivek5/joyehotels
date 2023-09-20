@@ -1,0 +1,74 @@
+{% load static %}
+
+{% include 'navigation.html' %}
+
+{% block register %}
+
+<!-- Register form -->
+
+<section class="book" style="margin-top: 50px" id="book">
+  {% include 'messages.html' %}
+
+  <div class="row">
+    <div class="img">
+      <img decoding="async" src=" {% static 'img/signup.svg' %} " alt="" />
+    </div>
+
+    <div class="login-form-container form">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="inputBox">
+          <h3>Enter username</h3>
+          <input type="text" name="username" id="username" placeholder="username" />
+        </div>
+        <div class="inputBox">
+          <h3>Enter email</h3>
+          <input type="email" name="email" id="email" placeholder="your email" />
+        </div>
+
+        <div class="inputBox">
+          <h3>Enter password</h3>
+          <input type="password" name="password1" id="password" placeholder="password" />
+        </div>
+        <div class="inputBox">
+          <h3>Confirm password</h3>
+          <input type="password" name="password2" id="password" placeholder="password" />
+        </div>
+
+        <input type="submit" class="btn" value="Register" />
+
+        <input type="checkbox" id="remember" />
+        <label for="remember">Remember me</label>
+        <p>forget password? <a href="#">click here</a></p>
+        <p>
+          Already have an account?
+          <a href="{% url 'login' %}" id="signin_toggle">signIn</a>
+        </p>
+
+        <!-- login with google -->
+        <hr style="height: 2px; border: 0.5px solid rgb(199, 199, 199);">
+        <p>
+
+          <!-- google button design -->
+        <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID"
+          data-login_uri="https://your.domain/your_login_endpoint" data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with"
+          data-shape="rectangular" data-logo_alignment="left">
+        </div>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        </p>
+      </form>
+
+
+
+    </div>
+  </div>
+
+</section>
+
+
+{% endblock register %}
+
+<!-- client_id = 347222576891-1utlgc74ircpqe9b1f0k2kgm3q6ktv5a.apps.googleusercontent.com -->

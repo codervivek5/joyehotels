@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% block title %}{% endblock title %}
+
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- Load your custom CSS files using the static template tag -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <!-- Header section -->
+  <header>
+    <div id="menu-bar" class="fas fa-bars"></div>
+    
+    <div class="wraped_logo">
+      <a href="{% url 'home' %}" class="logo">
+        <img src="{% static 'img/logo.png' %}" alt="logo_image">
+        <span>joye</span>Hotels
+      </a>
+    </div>
+    
+    <nav class="navbar" id="navbar">
+      <a href="{% url 'home' %}">home</a>
+      <a href="{% url 'hotels' %}">hotels</a>
+
+      <a href="/#services">services</a>
+      <a href="/#gallery">gallery</a>
+      <a href="/#review">review</a>
+      <a href="/#contact">contact</a>
+    </nav>
+    
+    <div class="icons">
+      <i class="fas fa-search" id="search-btn"></i>
+      
+      {% if user.is_authenticated %}
+      <p>Hello, {{ user.username }}!</p>
+      <a href="{% url 'logout' %}">Logout</a>
+      
+      {% else %}
+      <a href="{% url 'login' %}" class="btn btn-outline-success">Login</a>
+      {% endif %}
+    </div>
+    
+    <form action="" class="search-bar-container">
+      <input type="search" id="search-bar" name="search" placeholder="search here..." value="{{search }}">
+      <label for="search-bar" class="fas fa-search search-icon" type="submit" ></label>
+    </form>
+
+  </header>
+  <!-- Header section -->
+  
+  {% block login %}{% endblock login %}
+  {% block register %}{% endblock register %}
+  
+  <!-- Footer section -->
+  
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js" defer></script>
+  
+  <!-- Load your custom JavaScript files using the static template tag -->
+  <script src="{% static 'js/script.js' %}" defer></script>
+  <script src="{% static 'js/login_signup.js' %}" defer></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchIcon = document.querySelector('.search-icon');
+        const searchInput = document.querySelector('#search-bar');
+
+        searchIcon.addEventListener('click', function () {
+            searchInput.closest('form').submit();
+        });
+    });
+</script>
+
+</body>
+</html>

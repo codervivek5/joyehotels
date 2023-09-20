@@ -1,0 +1,126 @@
+
+{% load static %}
+<!-- Load static files -->
+
+{% include 'navigation.html' %}
+<!-- Include navigation section -->
+{% block title %}JoyeHotels - Hotels{% endblock title %}
+
+<section class="book" style="margin-top: 70px" id="book">
+  <div class="row">
+    {% include 'messages.html' %}
+    
+    <form method="POST" action="{% url 'hotels'%}">
+
+      {% csrf_token %}
+      <!-- Form for booking -->
+
+      <div class="inputBox">
+
+        <h3>Place</h3>
+        <!-- <input type="text" name="Place" id="place" placeholder="place name" /> -->
+
+        <select class="dropdown">
+          <!-- Dropdown for selecting place -->
+          <option value="" disabled selected>--choose--</option>
+
+          {% for hotel_objs in hotel_obj %}
+          <!-- Loop through available amenities -->
+          <option value="{{hotel_objs.place}}">{{hotel_objs.place}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- <div class="inputBox">
+        <h3>how many</h3>
+        <input type="number" name="Number of guests" id="numberOfGuests" placeholder="number of guests" />
+      </div> -->
+
+      <div class="inputBox">
+        <!-- Input box for check-in date -->
+        <h3>arrivals</h3>
+        <input type="date" name="Check_in_date" id="checkInDate" />
+      </div>
+      <div class="inputBox">
+        <!-- Input box for check-out date -->
+        <h3>leaving</h3>
+        <input type="date" name="Check_out_date" id="checkOutDate" />
+      </div>
+      <input type="submit" class="btn" value="check availability" />
+      <!-- Submit button for booking -->
+    </form>
+
+    <div class="img">
+      <!-- Image section -->
+      <img decoding="async" src="{% static 'img/book-img.svg' %}" alt="" />
+    </div>
+  </div>
+</section>
+
+<!-- Include filterSection section -->
+{% include 'filterSection.html' %}
+
+<!-- Hotels section -->
+<section class="packages" id="packages">
+  <h1 class="heading">
+    <!-- Heading for hotels section -->
+    <span>h</span>
+    <span>o</span>
+    <span>t</span>
+    <span>e</span>
+    <span>l</span>
+    <span>s</span>
+  </h1>
+
+  <!-- Hotel cards section -->
+  <div class="box-container">
+    {% if hotel_obj %}
+      {% for hotel_obj in hotel_obj %}
+      <!-- Loop through hotel objects -->
+
+      <div class="box">
+        <!-- Individual hotel card -->
+        <img decoding="async" src="/media/{{ hotel_obj.hotel_images.first.image }}" alt="Hotel Images" />
+
+        <div class="content">
+          <!-- Hotel content -->
+          <h3>{{hotel_obj.hotel_name}}</h3>
+          <h4><i class="fas fa-map-marker-alt"></i> {{hotel_obj.place}}</h4>
+
+          <p>{{hotel_obj.description|truncatechars:80}}</p>
+
+          <p>
+            {% for amenitie in hotel_obj.amenities.all %}
+            <b> {{amenitie.amenity_name}}</b>,
+            {% endfor %}
+          </p>
+
+          <span> <strong>Room count : {{hotel_obj.room_count}}</strong></span>
+
+          <div class="stars">
+            <!-- Star rating -->
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+
+          <div class="price">
+            <!-- Hotel price -->
+            ₹ {{hotel_obj.hotel_price}} <span>₹ {{hotel_obj.actual_price}}</span>
+          </div>
+          <a href="/hoteldetail/{{hotel_obj.uid}}" class="btn">book now</a>
+          <!-- Book now button -->
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      {% include 'messages.html' %}
+    {% endif %}
+  </div>
+
+</section>
+
+{% include 'footer.html' %}
+<!-- Include footer section -->
