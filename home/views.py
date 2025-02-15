@@ -279,3 +279,6 @@ def payment(request, uid):
 
 # def pay(request):
 #     return render(request , 'success_payment.html')
+
+def booking(request):
+    return render(request , 'booking.html')
