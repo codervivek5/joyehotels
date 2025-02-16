@@ -10,6 +10,7 @@ import razorpay
 from django.conf import settings
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
+from .models import Hotel
 
 
 def home(request):
@@ -279,3 +280,16 @@ def payment(request, uid):
 
 # def pay(request):
 #     return render(request , 'success_payment.html')
+
+# search functionality
+def search_hotels(request):
+    query = request.GET.get('q')  # Get the query from the search input
+    if query:
+        results = Hotel.objects.filter(
+            Q(hotel_name__icontains=query) | 
+            Q(place__icontains=query) | 
+            Q(description__icontains=query)
+        )
+    else:
+        results = Hotel.objects.none()  # Return no results if no query
+    return render(request, 'search_results.html', {'results': results, 'query': query})
