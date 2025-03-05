@@ -1,10 +1,12 @@
 
 {% load static %}
 
+{% include 'navigation.html' %}
+
+
 {% block booking %}
 <!-- book section -->
-
-<section class="book" id="book">
+<section class="book" id="book" style="margin-top: 50px;">
     <h1 class="heading">
         <span>b</span>
         <span>o</span>
@@ -51,3 +53,5 @@
     </div>
 </section>
 {% endblock booking %}
+
+{% include 'footer.html' %}

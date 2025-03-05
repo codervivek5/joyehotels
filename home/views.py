@@ -281,6 +281,7 @@ def payment(request, uid):
 # def pay(request):
 #     return render(request , 'success_payment.html')
 
+
 # search functionality
 def search_hotels(request):
     query = request.GET.get('q')  # Get the query from the search input
@@ -293,3 +294,7 @@ def search_hotels(request):
     else:
         results = Hotel.objects.none()  # Return no results if no query
     return render(request, 'search_results.html', {'results': results, 'query': query})
+
+def booking(request):
+    return render(request , 'booking.html')
+
