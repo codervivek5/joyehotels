@@ -16,6 +16,7 @@ urlpatterns = [
     
     path('contact/', views.contact_view, name='contact'),
     path('payment/<uuid:uid>/', views.payment, name='payment'),
+    path('booking/', views.booking, name='booking'),
     # path('pay', views.pay, name='pay'),
     
 
