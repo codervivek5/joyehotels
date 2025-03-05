@@ -1,0 +1,79 @@
+{% load static %}
+
+{% include 'navigation.html' %}
+
+{% block title %}
+  Search Results
+{% endblock %}
+
+{% block content %}
+
+<section class="packages" id="packages" style="margin-top: 50px;">
+  <h1 class="heading">
+    <span>h</span>
+    <span>o</span>
+    <span>t</span>
+    <span>e</span>
+    <span>l</span>
+    <span>s</span>
+  </h1>
+
+  {% if results %}
+    <div style="margin-bottom: 20px; font-size: 18px; font-weight: bold;">
+      Showing results for: "{{ query }}"
+    </div>
+  {% endif %}
+
+  <div class="box-container">
+    {% if results %}
+      {% for hotel_obj in results %}
+      <div class="box">
+        <img decoding="async" src="/media/{{ hotel_obj.hotel_images.first.image }}" alt="Hotel Images" />
+
+        <div class="content">
+          <h3>{{ hotel_obj.hotel_name }}</h3>
+          <h4><i class="fas fa-map-marker-alt"></i> {{ hotel_obj.place }}</h4>
+
+          <p>{{ hotel_obj.description|truncatechars:80 }}</p>
+
+          <p>
+            {% for amenitie in hotel_obj.amenities.all %}
+              <b>{{ amenitie.amenity_name }}</b>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </p>
+
+          <span><strong>Room count: {{ hotel_obj.room_count }}</strong></span>
+
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+
+          <div class="price">
+            ₹ {{ hotel_obj.hotel_price }} <span>₹ {{ hotel_obj.actual_price }}</span>
+          </div>
+
+          <a href="/hoteldetail/{{ hotel_obj.uid }}" class="btn">book now</a>
+        </div>
+      </div>
+      {% endfor %}
+
+    {% else %}
+      
+    <div style="margin-bottom: 20px; font-size: 18px; font-weight: bold;">
+      No results found for: "{{ query }}"
+    </div>
+      
+    {% endif %}
+  </div>
+
+  <a href="{% url 'home' %}" class="btn">Back to Home</a>
+
+</section>
+
+{% endblock %}
+
+{% include 'footer.html' %}

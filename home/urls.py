@@ -18,6 +18,7 @@ urlpatterns = [
     path('payment/<uuid:uid>/', views.payment, name='payment'),
     path('booking/', views.booking, name='booking'),
     # path('pay', views.pay, name='pay'),
+    path('search/', views.search_hotels,name='search_hotels'),
     
 
 ]

@@ -49,9 +49,9 @@
       {% endif %}
     </div>
     
-    <form action="" class="search-bar-container">
-      <input type="search" id="search-bar" name="search" placeholder="search here..." value="{{search }}">
-      <label for="search-bar" class="fas fa-search search-icon" type="submit" ></label>
+    <form method="get" action="{% url 'search_hotels' %}" role="search" class="search-bar-container">
+      <input type="search" name="q" placeholder="Search" aria-label="Search" value="{{ query|default_if_none:'' }}" id="search-bar">
+      <label type="submit" class="fas fa-search search-icon"></label>
     </form>
 
   </header>
